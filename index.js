@@ -21,6 +21,10 @@ function Multer (options) {
   this.limits = options.limits
   this.preservePath = options.preservePath
   this.fileFilter = options.fileFilter || allowAll
+
+  if (this.logger) {
+    this.logger.debug('multer: Multer')
+  }
 }
 
 Multer.prototype._makeMiddleware = function (fields, fileStrategy) {
@@ -43,6 +47,10 @@ Multer.prototype._makeMiddleware = function (fields, fileStrategy) {
 
       filesLeft[file.fieldname] -= 1
       fileFilter(req, file, cb)
+    }
+
+    if (this.logger) {
+      this.logger.debug('multer: setup')
     }
 
     return {
