@@ -23,7 +23,7 @@ function Multer (options) {
   this.fileFilter = options.fileFilter || allowAll
 
   if (this.logger) {
-    this.logger.debug('multer: Multer')
+    this.logger.warn('multer: Multer')
   }
 }
 
@@ -50,7 +50,7 @@ Multer.prototype._makeMiddleware = function (fields, fileStrategy) {
     }
 
     if (this.logger) {
-      this.logger.debug('multer: setup')
+      this.logger.warn('multer: setup')
     }
 
     return {
